@@ -20,8 +20,15 @@
                         @endif
                     </h2>
                     <div class="row ml-1">
-                        @foreach($categories as $category)
-                            <span class="badge badge-default badge-pill mr-1">{{$category->description}}</span>
+                        @foreach($categories as $categoryArray)
+                            <span class="badge badge-default badge-pill mr-1">
+                                @foreach($categoryArray as $category)
+                                    {{$category->description}}
+                                    @if(!($loop->last))
+                                        >
+                                    @endif
+                                @endforeach
+                            </span>
                         @endforeach
                     </div>
                 </div>

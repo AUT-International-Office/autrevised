@@ -80,7 +80,24 @@ class fundController extends Controller
             $fund = fund::where('visible',true)->find($id);
         if(!$fund)
             return view('errors.404');
+
         $categories = $fund->tags->all();
+
+        $temp = [];
+        foreach ($categories as $category){
+            $cat = tag::find($category["id"]);
+            $tempArray = [];
+            array_push($tempArray, $cat);
+            $catParent = $cat->parent;
+            while ($catParent){
+                array_push($tempArray, $catParent);
+                $catParent = $catParent->parent;
+            }
+            $tempArray = array_reverse($tempArray);
+            array_push($temp, $tempArray);
+        }
+        $categories = $temp;
+
         $organizations = $fund->organization;
         $countries = $organizations->country;
         $fields = $fund->fields->all();
