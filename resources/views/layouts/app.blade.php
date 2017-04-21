@@ -30,7 +30,7 @@
 <body style="background: #eef2f6">
     <div id="app" class="pb-5">
 
-        <nav id="mainNabvar" class="navbar navbar-toggleable-md navbar-light bg-faded mb-3" style="background: #276bb0;">
+        <nav id="mainNabvar" class="navbar navbar-toggleable-md navbar-light bg-faded mb-3 hidden-print" style="background: #276bb0;">
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>

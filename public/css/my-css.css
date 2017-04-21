@@ -126,24 +126,45 @@ li{
     color: white;
 }
 
+.tableOfContents {
+    font-size: 20px;
+}
+
+
 
 @media print {
+    .middleThing {
+        justify-content: center;
+        height: 500px;
+        margin-top: 40%;
+        font-size: 70px;
+    }
 
     .printed{
-        position: absolute;
-        margin: 10px;
-        margin-top: 10%;
-        page-break-inside: avoid;
+        /*position: absolute;*/
+        /*margin: 10px;*/
+        page-break-after: always;
+        page-break-before: always;
+        /*margin-top: 10%;*/
+        /*page-break-inside: avoid;*/
     }
+
+
+    .PageNum {
+        position: relative;
+        top: 1400px;
+        margin-left: 500px;
+        font-size: 20px;
+        z-index: 1000;
+    }
+
 
     *::first-letter{
         line-height: inherit;
     }
 
-
-    
     @page  {
-        size: A3 landscape;
+        size: A4 portrait;
         margin: 0;
 
         @bottom-right {

@@ -15,13 +15,32 @@ class reportController extends Controller
 {
     public function show(){
       $funds = new Collection();
+      $lengthTotal = 0;
       foreach ($this->getCategories() as $tag){
-          $tmp = $tag->funds()->where('visible',true)->with('tags', 'organization', 'fields')->orderBy('organization_id')->get();
+          $tmp = $tag["mainTag"]->funds()->where('visible',true)->with('tags', 'organization', 'fields')->orderBy('organization_id')->get();
           $fundsTmp = new Collection();
           foreach ($tmp as $fund){
+
+              $categories = $fund->tags->all();
+
+              $temp = [];
+              foreach ($categories as $category){
+                  $cat = tag::find($category["id"]);
+                  $tempArray = [];
+                  array_push($tempArray, $cat);
+                  $catParent = $cat->parent;
+                  while ($catParent){
+                      array_push($tempArray, $catParent);
+                      $catParent = $catParent->parent;
+                  }
+                  $tempArray = array_reverse($tempArray);
+                  array_push($temp, $tempArray);
+              }
+              $fund->tags = $temp;
               $fundsTmp->push($fund);
           }
-          $funds->push(["tag"=>$tag, "funds"=>$fundsTmp]);
+          $lengthTotal += $fundsTmp->count();
+          $funds->push(["tag"=>$tag, "funds"=>$fundsTmp, "lengthTotal"=>$lengthTotal]);
       }
 //      $funds = $funds->all();
 //      $funds = tag::funds()->with('tags', 'organization', 'fields')->get();
@@ -34,6 +53,19 @@ class reportController extends Controller
         $tags = tag::where('parent_id', 0)->get();
         foreach ($tags as $tag)
             $tagsInOrder->merge($this->findChildren($tag, $tagsInOrder));
+        foreach ($tagsInOrder as $tagInOrder)
+            {
+                $tempArray = [];
+                array_push($tempArray, $tagInOrder);
+                $catParent = $tagInOrder->parent;
+                while ($catParent){
+                    array_push($tempArray, $catParent);
+                    $catParent = $catParent->parent;
+                }
+                $tempArray = array_reverse($tempArray);
+                $tagInOrder["mainTag"] = $tagInOrder;
+                $tagInOrder["parents"] = $tempArray;
+            }
         return $tagsInOrder;
     }
 
