@@ -1,0 +1,3 @@
+export IMAGE=registry.docker.cloud.aut.ac.ir/autrevised/autrevised
+docker build -t $IMAGE .
+docker push $IMAGE
