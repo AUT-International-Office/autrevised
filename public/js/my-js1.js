@@ -7,7 +7,8 @@ document.filters = {
     $field_ids: [],
     $tag_ids: [],
     $country_ids: [],
-    $ratings: []
+    $ratings: [],
+
 };
 
 
