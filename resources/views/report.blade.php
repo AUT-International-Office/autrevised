@@ -103,9 +103,9 @@
                             @endforeach
                                 <hr>
                         </div>
-                        <div class="card">
-                            <div class="card-block">
-                                <div class="card-title">
+                        <div>
+                            <div>
+                                <div class="px-4">
                                     <h1 class="justify-content-between">
                                         {{stripslashes($fund->name)}}
                                     </h1>
@@ -124,6 +124,7 @@
                                     <div class="row ml-1 mt-2">
                                         <h3 class="pull-left">
                                             <span class="badge badge-success badge-pill   ml-1">{{$fund->organization->name}}</span>
+                                            <span class="badge badge-primary badge-pill  ">{{$fund->organization->country->name}}</span>
                                             <span class="m-2">
                                                 @foreach($fund->fields as $field)
                                                     <h4 style="display: inline"><span class="badge badge-primary badge-pill mb-2">{{$field->title}}</span></h4>
@@ -204,18 +205,18 @@
                                         </div>
                                     </div>
 
-                                    <div id="comments" class="card mt-2">
-                                        <div class="row">
-                                            <div class="card-block col-sm-11">
-                                                <div class="card-text text-justify pl-3">
-                                                    <strong></strong>{{stripslashes($fund->comments)}}
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-1 mt-2">
-                                                <img id="commentIcon" src="{{asset('img/comment.png')}}" width="50px" alt="">
-                                            </div>
-                                        </div>
-                                    </div>
+                                    {{--<div id="comments" class="card mt-2">--}}
+                                        {{--<div class="row">--}}
+                                            {{--<div class="card-block col-sm-11">--}}
+                                                {{--<div class="card-text text-justify pl-3">--}}
+                                                    {{--<strong></strong>{{stripslashes($fund->comments)}}--}}
+                                                {{--</div>--}}
+                                            {{--</div>--}}
+                                            {{--<div class="col-sm-1 mt-2">--}}
+                                                {{--<img id="commentIcon" src="{{asset('img/comment.png')}}" width="50px" alt="">--}}
+                                            {{--</div>--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
                                 </div>
                             </div>
                         </div>
