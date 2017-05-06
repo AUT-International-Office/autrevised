@@ -1,14 +1,17 @@
-
+@font-face {
+    font-family: "Shabnam";
+    src: url("../fonts/Shabnam-Light-FD.ttf");
+}
 
 .description{
-    font-family: "Shabnam Light";
+    font-family: "Shabnam";
     direction: rtl;
     text-align: right;
     width: 100%;
 }
 
 input:lang(fa) {
-    font-family: Shabnam;
+    font-family: "Shabnam";
 }
 
 
@@ -106,7 +109,7 @@ li{
 
 #farsi{
     direction: rtl;
-    font-family: Shabnam;
+    font-family: "Shabnam";
 }
 
 .nav-item a , .nav-item a:visited, .nav-item a:link, .nav-item a:hover, .nav-item a:active{

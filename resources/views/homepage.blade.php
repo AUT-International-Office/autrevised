@@ -17,7 +17,7 @@
 
     <style>
         input{
-            font-family: Shabnam, Raleway;
+            font-family: "Shabnam", Raleway, SansSerif;
         }
     </style>
 
@@ -91,6 +91,25 @@
                         @endforeach
                     </select>
                 </div>
+
+                @if(!\Illuminate\Support\Facades\Auth::guest())
+                    <li class="nav-item">
+                        <a data-toggle="collapse" href="#visiblePan" id="Visible">
+                            <i class="fa fa-caret-right" style="font-size: 25px" aria-hidden="true"></i>
+                            <span class="list-span">Visible</span>
+                        </a>
+                    </li>
+                    <div class="collapse" id="visiblePan">
+                        <select class="form-control List js-states" title="Choose your option..." style="width: 100%" id="VisibleFilter">
+                                <option value=1>
+                                    True
+                                </option>
+                                <option value=0>
+                                    False
+                                </option>
+                        </select>
+                    </div>
+                @endif
 
 
             </ul>
