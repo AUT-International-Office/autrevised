@@ -8,7 +8,8 @@ ENV COMPOSER_NO_INTERACTION=1
 COPY composer.* /var/www/src/
 
 RUN cd /var/www/src && \
-            composer install \ 
+
+            composer install \
                 --prefer-dist \
                 --ignore-platform-reqs \
                 --no-scripts \
@@ -25,4 +26,4 @@ RUN cd /var/www/src && \
             composer dump-autoload \
                      --no-ansi \
                      --optimize \
-                     --no-dev 
+                     --no-dev

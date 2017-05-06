@@ -121,9 +121,9 @@
                                             {{$fund->farsi}}
                                         <span id="editViewLinks" class="pull-left m-3">
                                           @if(!\Illuminate\Support\Facades\Auth::guest())
-                                                <a href="fund/{{$fund->id}}" class="btn btn-sm btn-success ml-1 editLink">Edit</a>
+                                                <a href="fund/{{$fund->id}}" target="_blank" class="btn btn-sm btn-success ml-1 editLink">Edit</a>
                                             @endif
-                                            <a href="show/fund/{{$fund->id}}" class="btn btn-sm btn-primary pull-left viewLink">View</a>
+                                            <a href="show/fund/{{$fund->id}}" target="_blank" class="btn btn-sm btn-primary pull-left viewLink">View</a>
                                         </span>
 
                                     </div>

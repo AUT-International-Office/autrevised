@@ -145,10 +145,16 @@ li{
         /*margin: 10px;*/
         page-break-after: always;
         page-break-before: always;
+        break-after: page;
+        break-before: page;
         /*margin-top: 10%;*/
         /*page-break-inside: avoid;*/
     }
 
+    .card {
+        page-break-inside: avoid;
+        break-inside: avoid;
+    }
 
     .PageNum {
         position: relative;
