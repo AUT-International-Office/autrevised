@@ -8,6 +8,7 @@ ENV COMPOSER_NO_INTERACTION=1
 COPY composer.* /var/www/src/
 
 RUN cd /var/www/src && \
+
             composer install \
                 --prefer-dist \
                 --ignore-platform-reqs \
