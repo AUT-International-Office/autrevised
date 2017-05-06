@@ -34,6 +34,11 @@ class searchController extends Controller
         else
             $tag_ids = [];
 
+        if(isset($filter['$visible']))
+            $visible = intval($filter['$visible']);
+        else
+            $visible = 1;
+
         if(isset($filter['$country_ids']))
             $country_ids = $filter['$country_ids'];
         else
@@ -54,11 +59,13 @@ class searchController extends Controller
         $final = $this->filterByRating($filteredByOrgFieldTagCountry, $ratings);
         $count = fund::find($final)->count();
         if($r->user())
-            $Results = fund::with('organization')->find($final)->toArray();
+            $Results = fund::where('visible',$visible)->with('organization')->find($final)->toArray();
         else
-            $Results = fund::where('visible',1)->with('organization')->find($final)->toArray();
+            $Results = fund::where('visible',$visible)->with('organization')->find($final)->toArray();
         $finalResults = array_slice($Results,$offset,8);
         return response()->json(['count'=> $count, 'result'=>$finalResults]);
+
+
     }
 
     private function filterByOrg($before, $org_ids){

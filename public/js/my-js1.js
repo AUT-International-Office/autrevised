@@ -8,7 +8,7 @@ document.filters = {
     $tag_ids: [],
     $country_ids: [],
     $ratings: [],
-
+    $visible: 1
 };
 
 
@@ -48,6 +48,8 @@ $(".List").change(function () {
         document.filters.$country_ids = value;
     else if(id == 'ResearchFilter')
         document.filters.$field_ids = value;
+    else if(id == 'VisibleFilter')
+        document.filters.$visible = value;
 
     console.log(document.filters);
     var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
