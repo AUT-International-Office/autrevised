@@ -14,31 +14,28 @@
                     @if($arr["tag"]["mainTag"]["is_parent"] && $arr["tag"]["mainTag"]->parent_id == 0)
                         @if($loop->index != 0)
                             <div class="card p-2" style="width: 100%">
-                                <div class="row">
-                                    <div class="col-sm-11">
-                                        {{$arr["tag"]["mainTag"]->description}}
-                                    </div>
-                                    <div class="col-sm-1">{{$funds[$loop->index-1]["lengthTotal"]+1}}</div>
+                                <div class="row tagParent">
+                                    <div class="col-sm-1 tagReal">{{$arr["tag"]["mainTag"]->real}}</div>
+                                    <div class="col-sm-9 tagDescription">{{$arr["tag"]["mainTag"]->description}}</div>
+                                    <div class="col-sm-1 tagPage pl-3">{{$funds[$loop->index-1]["lengthTotal"]+1}}</div>
                                 </div>
                             </div>
                         @else
                             <div class="card p-2" style="width: 100%">
-                                <div class="row">
-                                    <div class="col-sm-11">
-                                        {{$arr["tag"]["mainTag"]->description}}
-                                    </div>
-                                    <div class="col-sm-1">1</div>
+                                <div class="row tagParent">
+                                    <div class="col-sm-1 tagReal">{{$arr["tag"]["mainTag"]->real}}</div>
+                                    <div class="col-sm-9 tagDescription">{{$arr["tag"]["mainTag"]->description}}</div>
+                                    <div class="col-sm-1 pl-3">1</div>
                                 </div>
                             </div>
                         @endif
                     @else
                             @if($loop->index != 0)
                                 <div class="card p-2" style="width: 100%">
-                                    <div class="row">
-                                        <div class="col-sm-11">
-                                            {{$arr["tag"]["mainTag"]->description}}
-                                        </div>
-                                        <div class="col-sm-1">{{$funds[$loop->index-1]["lengthTotal"]+1}}</div>
+                                    <div class="row tagParent">
+                                        <div class="col-sm-1 tagReal">{{$arr["tag"]["mainTag"]->real}}</div>
+                                        <div class="col-sm-9 tagDescription">{{$arr["tag"]["mainTag"]->description}}</div>
+                                        <div class="col-sm-1 pl-3">{{$funds[$loop->index-1]["lengthTotal"]+1}}</div>
                                     </div>
                                 </div>
                             @endif
@@ -226,4 +223,5 @@
 
         @endforeach
     </div>
+    <script src="{{asset('js/reportScript.js')}}"></script>
 @endsection
