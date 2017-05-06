@@ -65,6 +65,7 @@ class searchController extends Controller
         $finalResults = array_slice($Results,$offset,8);
         return response()->json(['count'=> $count, 'result'=>$finalResults]);
 
+
     }
 
     private function filterByOrg($before, $org_ids){
