@@ -64,6 +64,7 @@ class searchController extends Controller
             $Results = fund::where('visible',$visible)->with('organization')->find($final)->toArray();
         $finalResults = array_slice($Results,$offset,8);
         return response()->json(['count'=> $count, 'result'=>$finalResults]);
+
     }
 
     private function filterByOrg($before, $org_ids){
