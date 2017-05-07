@@ -92,6 +92,23 @@
                     </select>
                 </div>
 
+                <li class="nav-item">
+                    <a data-toggle="collapse" href="#ratingPan"  id="Rating">
+                        <i class="fa fa-caret-right" style="font-size: 25px" aria-hidden="true"></i>
+                        <span class="list-span">Rating</span>
+                    </a>
+                </li>
+                <div class="collapse" id="ratingPan">
+                    <select class="List js-states form-control" style="width: 100%" id="RatingFilter" multiple="multiple">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                    </select>
+                </div>
+
                 @if(!\Illuminate\Support\Facades\Auth::guest())
                     <li class="nav-item">
                         <a data-toggle="collapse" href="#visiblePan" id="Visible">

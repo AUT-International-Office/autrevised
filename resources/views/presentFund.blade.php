@@ -53,6 +53,13 @@
                             </div>
                         </div>
                     </div>
+                    <div class="card bg-primary mt-2">
+                        <div class="card-block">
+                            <div class="card-text text-center text-justify">
+                                <strong style="color: whitesmoke; font-size: 30px">Rating: {{$fund->rating}}</strong>
+                            </div>
+                        </div>
+                    </div>
                     <div class="card mt-2">
                         <div class="card-block">
                             <div class="card-text text-justify" style="direction: rtl; font-family: Shabnam">
