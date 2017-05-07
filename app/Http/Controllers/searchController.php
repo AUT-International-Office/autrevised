@@ -49,7 +49,10 @@ class searchController extends Controller
         else
             $text = "";
 
-        $ratings = [];
+        if(isset($filter['$ratings']))
+            $ratings = $filter['$ratings'];
+        else
+            $ratings = [];
 
         $filteredByText = $this->searchByText($text);
         $filteredByOrgs = $this->filterByOrg($filteredByText, $org_ids);

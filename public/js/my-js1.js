@@ -48,6 +48,8 @@ $(".List").change(function () {
         document.filters.$country_ids = value;
     else if(id == 'ResearchFilter')
         document.filters.$field_ids = value;
+    else if(id == 'RatingFilter')
+        document.filters.$ratings = value;
     else if(id == 'VisibleFilter')
         document.filters.$visible = value;
 
