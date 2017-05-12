@@ -144,6 +144,13 @@ li{
     body{
         -webkit-print-color-adjust: exact;
         margin-top: 10px;
+        width: 1100px;
+        height: 100%;
+    }
+
+
+    .badge, .badge-pill, .badge-primary, .badge-success {
+        margin-bottom: 5px;
     }
 
     .middleThing {
@@ -180,8 +187,8 @@ li{
 
     .PageNum {
         position: relative;
-        top: 1350px;
-        margin-left: 500px;
+        top: 90rem;
+        margin-left: 50vw;
         font-size: 20px;
         z-index: 1000;
     }

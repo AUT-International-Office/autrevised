@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\country;
 use App\fund;
+use App\organization;
 use App\tag;
 use Barryvdh\DomPDF\PDF;
 use Barryvdh\Snappy\Facades\SnappyPdf;
@@ -16,10 +17,11 @@ class reportController extends Controller
 {
     public function show($name){
       $country_id = country::where('name', $name)->get()[0]->id;
+      $organization_id = organization::where('country_id', $country_id)->get()[0]->id;
       $funds = new Collection();
       $lengthTotal = 0;
       foreach ($this->getCategories() as $tag){
-          $tmp = $tag["mainTag"]->funds()->where('visible',true)->with('tags', 'organization', 'fields')->orderBy('organization_id')->get();
+          $tmp = $tag["mainTag"]->funds()->where('visible',true)->where('organization_id', $organization_id)->with('tags', 'fields', 'organization')->orderBy('organization_id')->get();
           $fundsTmp = new Collection();
           foreach ($tmp as $fund){
 
@@ -46,7 +48,7 @@ class reportController extends Controller
       }
 //      $funds = $funds->all();
 //      $funds = tag::funds()->with('tags', 'organization', 'fields')->get();
-//        return $funds[0]["funds"];
+//        return $funds[1]["funds"];
       return view('report')->with(compact('funds'));
     }
 
