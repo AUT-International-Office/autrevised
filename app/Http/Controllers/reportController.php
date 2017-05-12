@@ -17,11 +17,11 @@ class reportController extends Controller
 {
     public function show($name){
       $country_id = country::where('name', $name)->get()[0]->id;
-      $organization_id = organization::where('country_id', $country_id)->get()[0]->id;
+      $organization_id = organization::where('country_id', $country_id)->get()->pluck("id")->toArray();
       $funds = new Collection();
       $lengthTotal = 0;
       foreach ($this->getCategories() as $tag){
-          $tmp = $tag["mainTag"]->funds()->where('visible',true)->where('organization_id', $organization_id)->with('tags', 'fields', 'organization')->orderBy('organization_id')->get();
+          $tmp = $tag["mainTag"]->funds()->where('visible',true)->whereIn('organization_id', $organization_id)->with('tags', 'fields', 'organization')->orderBy('organization_id')->get();
           $fundsTmp = new Collection();
           foreach ($tmp as $fund){
 
