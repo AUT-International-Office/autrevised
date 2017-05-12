@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container-fluid">
-        <div class="tableOfContents card p-4">
+        <div class="tableOfContents p-4">
             <div class="card-title">
                 <h2>
                     Table of contents
@@ -16,16 +16,16 @@
                             <div class="card p-2" style="width: 100%">
                                 <div class="row tagParent">
                                     <div class="col-sm-1 tagReal">{{$arr["tag"]["mainTag"]->real}}</div>
-                                    <div class="col-sm-9 tagDescription">{{$arr["tag"]["mainTag"]->description}}</div>
-                                    <div class="col-sm-1 tagPage pl-3">{{$funds[$loop->index-1]["lengthTotal"]+1}}</div>
+                                    <div class="col-sm-10 tagDescription">{{$arr["tag"]["mainTag"]->description}}</div>
+                                    <div class="col-sm-1 tagPage pl-3 text-right">{{$funds[$loop->index-1]["lengthTotal"]+1}}</div>
                                 </div>
                             </div>
                         @else
                             <div class="card p-2" style="width: 100%">
                                 <div class="row tagParent">
                                     <div class="col-sm-1 tagReal">{{$arr["tag"]["mainTag"]->real}}</div>
-                                    <div class="col-sm-9 tagDescription">{{$arr["tag"]["mainTag"]->description}}</div>
-                                    <div class="col-sm-1 pl-3">1</div>
+                                    <div class="col-sm-10 tagDescription">{{$arr["tag"]["mainTag"]->description}}</div>
+                                    <div class="col-sm-1 pl-3 text-right">1</div>
                                 </div>
                             </div>
                         @endif
@@ -34,8 +34,8 @@
                                 <div class="card p-2" style="width: 100%">
                                     <div class="row tagParent">
                                         <div class="col-sm-1 tagReal">{{$arr["tag"]["mainTag"]->real}}</div>
-                                        <div class="col-sm-9 tagDescription">{{$arr["tag"]["mainTag"]->description}}</div>
-                                        <div class="col-sm-1 pl-3">{{$funds[$loop->index-1]["lengthTotal"]+1}}</div>
+                                        <div class="col-sm-10 tagDescription">{{$arr["tag"]["mainTag"]->description}}</div>
+                                        <div class="col-sm-1 pl-3 text-right">{{$funds[$loop->index-1]["lengthTotal"]+1}}</div>
                                     </div>
                                 </div>
                             @endif
@@ -152,8 +152,8 @@
                                     </div>
                                     <div class="card mt-2">
                                         <div class="card-block">
-                                            <div class="card-text text-justify" style="direction: rtl; font-family: Shabnam">
-                                                {{stripslashes($fund->farsi)}}
+                                            <div dir="rtl" lang="fa" class="card-text farsiDesc">
+                                                <p>{{stripslashes($fund->farsi)}}</p>
                                             </div>
                                         </div>
                                     </div>

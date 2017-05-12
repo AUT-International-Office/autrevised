@@ -20,7 +20,7 @@
                 })
                     .done(function (data) {
                         $.notify({
-                            title: '<strong>Fund Created</strong>',
+                            title: '<strong>User Created</strong>',
                             message: 'Fund successfully created. '+data
                         },{
                             type: 'success'
@@ -32,7 +32,7 @@
                     .fail(function () {
                         console.log("error");
                         $.notify({
-                            title: '<strong>Fund creation failed</strong>',
+                            title: '<strong>User creation failed</strong>',
                             message: 'There was an error while creating fund, try again.'
                         },{
                             type: 'danger'
@@ -68,7 +68,7 @@
                     .fail(function () {
                         console.log("error");
                         $.notify({
-                            title: '<strong>Set Adin failed</strong>',
+                            title: '<strong>Set Admin failed</strong>',
                             message: 'There was an error while setting admin, try again.'
                         },{
                             type: 'danger'
@@ -198,18 +198,18 @@
                         </div>
                     </div>
 
-                    <div class="col-sm-6 p-0 pl-2">
-                        <div class="card mt-3 text-center">
-                            <a href="{{ url('/report') }}" style="text-decoration: none; color: black ">
-                                <img class="card-img-top mt-3" src="{{asset('img/report3.png')}}" height="100px" alt="Card image cap">
-                                <div class="card-block">
-                                    <div class="card-text text-center">
-                                        <h3>Report</h3>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
+                    {{--<div class="col-sm-6 p-0 pl-2">--}}
+                        {{--<div class="card mt-3 text-center">--}}
+                            {{--<a href="{{ url('/report') }}" style="text-decoration: none; color: black ">--}}
+                                {{--<img class="card-img-top mt-3" src="{{asset('img/report3.png')}}" height="100px" alt="Card image cap">--}}
+                                {{--<div class="card-block">--}}
+                                    {{--<div class="card-text text-center">--}}
+                                        {{--<h3>Report</h3>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                            {{--</a>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
 
                 </div>
 
@@ -263,6 +263,16 @@
                         </form>
                     </div>
                 </div>
+
+                <div class="card mt-3 list-group">
+                    <h3 class="list-group-item active">Country reports</h3>
+                    @foreach($countries as $country)
+                        <div class="card-block pb-3">
+                            <a href="{{ url('/report/'.$country->name) }}" class="btn btn-success col-sm-12">
+                                {{$country->name}}
+                            </a>
+                        </div>
+                    @endforeach
             </div>
         </div>
 

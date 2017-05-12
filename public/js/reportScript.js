@@ -4,7 +4,7 @@
 $(document).ready(function () {
     var reals = $(".tagParent");
     $.each(reals, function (index, value) {
-        var paddingLeft = (count($(value).find(".tagReal").text(), '\\.')+1)*20+'px';
+        var paddingLeft = (count($(value).find(".tagReal").text(), '\\.')+1)*15+'px';
         $(value).find(".tagReal").css('padding-left', paddingLeft);
         $(value).find(".tagDescription").css('padding-left', paddingLeft);
         console.log(paddingLeft + $(value).find(".tagReal").text());
