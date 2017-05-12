@@ -16,7 +16,7 @@ class searchController extends Controller
 
     public function search(Request $r){
         $filter = $r->filter;
-        $offset = $r->offset * 5;
+        $offset = $r->offset * 8;
 
 //        return $filter;
         if(isset($filter['$org_ids']))
