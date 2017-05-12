@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\country;
 use App\fund;
 use App\tag;
 use Barryvdh\DomPDF\PDF;
@@ -13,7 +14,8 @@ use Illuminate\Support\Facades\View;
 
 class reportController extends Controller
 {
-    public function show(){
+    public function show($name){
+      $country_id = country::where('name', $name)->get()[0]->id;
       $funds = new Collection();
       $lengthTotal = 0;
       foreach ($this->getCategories() as $tag){
@@ -44,8 +46,8 @@ class reportController extends Controller
       }
 //      $funds = $funds->all();
 //      $funds = tag::funds()->with('tags', 'organization', 'fields')->get();
+//        return $funds[0]["funds"];
       return view('report')->with(compact('funds'));
-//        return $funds;
     }
 
     private function getCategories(){

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\country;
 use App\User;
 use Illuminate\Auth\Access\Response;
 use Illuminate\Http\Request;
@@ -16,7 +17,8 @@ class adminController extends Controller
 
     public function show(){
         $users = User::all();
-        return view('adminPanel')->with(compact('users'));
+        $countries = country::all();
+        return view('adminPanel')->with(compact('users', 'countries'));
     }
 
     public function setUnsetAdmin($id, Request $r){

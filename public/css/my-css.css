@@ -3,6 +3,11 @@
     src: url("../fonts/Shabnam-Light-FD.ttf");
 }
 
+@font-face {
+    font-family: "Mitra";
+    src: url("../fonts/BMitra.ttf");
+}
+
 .description{
     font-family: "Shabnam";
     direction: rtl;
@@ -136,11 +141,20 @@ li{
 
 
 @media print {
+    body{
+        -webkit-print-color-adjust: exact;
+        margin-top: 10px;
+    }
+
     .middleThing {
         justify-content: center;
         height: 500px;
         margin-top: 40%;
         font-size: 70px;
+    }
+
+    .farsiDesc {
+        font-family: "Shabnam", "Mitra", SansSerif;
     }
 
     .printed{
@@ -159,26 +173,38 @@ li{
         break-inside: avoid;
     }
 
+    .tableOfContents {
+        page-break-inside: avoid;
+        break-inside: avoid;
+    }
+
     .PageNum {
         position: relative;
-        top: 1400px;
+        top: 1350px;
         margin-left: 500px;
         font-size: 20px;
         z-index: 1000;
     }
 
 
-    *::first-letter{
+    *::first-letter {
         line-height: inherit;
+    }
+
+    .farsiDesc {
+        font-family: "Shabnam";
+        font-size: 20px;
+        font-size-adjust: inherit;
+    }
+
+    .farsiDesc::first-letter {
+        line-height: inherit;
+        font-size: inherit;
     }
 
     @page  {
         size: A4 portrait;
-        margin: 0;
-
-        @bottom-right {
-            content: counter(page);
-        }
+        margin: 10px 0 35px 0;
     }
 
 }

@@ -119,7 +119,7 @@ Route::delete('/users/{id}', 'adminController@deleteUser')->middleware('admin');
 #               Report Routes
 //----------------------------------------------
 
-Route::get('report', 'reportController@show')->middleware('admin');
+Route::get('report/{name}', 'reportController@show')->middleware('admin');
 Route::get('funds/*', function (){
    return view('errors.404');
 });
