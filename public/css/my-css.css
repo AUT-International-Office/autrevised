@@ -138,6 +138,13 @@ li{
     font-size: 20px;
 }
 
+.badge, .badge-pill, .badge-primary, .badge-success {
+    margin-bottom: 5px;
+}
+
+.page-link {
+    cursor: pointer;
+}
 
 
 @media print {
