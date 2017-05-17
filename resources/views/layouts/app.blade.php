@@ -11,7 +11,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <script src="{{asset('js/jquery.js')}}"></script>
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>@yield('title')</title>
     <link href="{{asset('css/select2.min.css')}}" rel="stylesheet" />
     <script src="{{asset('js/select2.min.js')}}"></script>
     <script src="{{asset('js/bootstrap-notify.js')}}"></script>

@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+Edit Fund - {{stripslashes($selectedFund->name)}}
+@endsection
+
 @section('content')
 
     <script type="text/javascript">

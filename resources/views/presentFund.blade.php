@@ -1,6 +1,10 @@
 
 @extends('layouts.app')
 
+@section('title')
+{{stripslashes($fund->name)}}
+@endsection
+
 @section('content')
     <style>
         .btn{
