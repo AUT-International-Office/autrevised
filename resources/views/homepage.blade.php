@@ -3,6 +3,10 @@
 
 @extends('layouts.app')
 
+@section('title')
+AUT Fund Search
+@endsection
+
 @section('content')
     <script>
         $(document).ready(function () {

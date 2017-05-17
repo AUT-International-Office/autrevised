@@ -60,11 +60,11 @@ class searchController extends Controller
         $filteredByOrgFieldTag = $this->filterByTag($filteredByOrgsNFields, $tag_ids);
         $filteredByOrgFieldTagCountry = $this->filterByCountry($filteredByOrgFieldTag, $country_ids);
         $final = $this->filterByRating($filteredByOrgFieldTagCountry, $ratings);
-        $count = fund::find($final)->count();
         if($r->user())
             $Results = fund::where('visible',$visible)->with('organization')->find($final)->toArray();
         else
             $Results = fund::where('visible',$visible)->with('organization')->find($final)->toArray();
+        $count = count($Results);
         $finalResults = array_slice($Results,$offset,8);
         return response()->json(['count'=> $count, 'result'=>$finalResults]);
 

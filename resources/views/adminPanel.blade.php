@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+Admin Panel
+@endsection
+
 @section('content')
     <script>
         $(document).ready(function () {

@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+Report
+@endsection
+
 @section('content')
     <div class="container-fluid">
         <div class="tableOfContents p-4">
