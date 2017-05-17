@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-Edit Fund - {{stripslashes($selectedFund->name)}}
+Edit Fund - {{stripslashes($selectedfund->name)}}
 @endsection
 
 @section('content')
