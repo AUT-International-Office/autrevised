@@ -26,7 +26,7 @@ class reportController extends Controller
           $tagChildren = $this->findChildren($tag["mainTag"], new Collection());
           $hasFund = false;
           foreach ($tagChildren as $tag_child){
-              if (!$tag_child->funds->isEmpty()){
+              if (!$tag_child->funds()->whereIn('organization_id', $organization_id)->get()->isEmpty()){
                   $hasFund = true;
                   break;
               }
