@@ -272,7 +272,7 @@ Admin Panel
                     <h3 class="list-group-item active">Country reports</h3>
                     @foreach($countries as $country)
                         <div class="card-block pb-3">
-                            <a href="{{ url('/report/'.$country->name) }}" class="btn btn-success col-sm-12">
+                            <a href="{{ url('/report/'.$country->name) }}" target="_blank" class="btn btn-success col-sm-12">
                                 {{$country->name}}
                             </a>
                         </div>

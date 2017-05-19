@@ -22,6 +22,8 @@ class reportController extends Controller
       $lengthTotal = 0;
       foreach ($this->getCategories() as $tag){
           $tmp = $tag["mainTag"]->funds()->where('visible',true)->whereIn('organization_id', $organization_id)->with('tags', 'fields', 'organization')->orderBy('organization_id')->get();
+          if($tmp->isEmpty())
+              continue;
           $fundsTmp = new Collection();
           foreach ($tmp as $fund){
 
