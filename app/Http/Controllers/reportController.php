@@ -22,7 +22,16 @@ class reportController extends Controller
       $lengthTotal = 0;
       foreach ($this->getCategories() as $tag){
           $tmp = $tag["mainTag"]->funds()->where('visible',true)->whereIn('organization_id', $organization_id)->with('tags', 'fields', 'organization')->orderBy('organization_id')->get();
-          if($tmp->isEmpty())
+
+          $tagChildren = $this->findChildren($tag["mainTag"], new Collection());
+          $hasFund = false;
+          foreach ($tagChildren as $tag_child){
+              if (!$tag_child->funds->isEmpty()){
+                  $hasFund = true;
+                  break;
+              }
+          }
+          if(!$hasFund)
               continue;
           $fundsTmp = new Collection();
           foreach ($tmp as $fund){
@@ -88,5 +97,7 @@ class reportController extends Controller
             $collectedTags->push($tag);
         return $collectedTags;
     }
+
+
 
 }
