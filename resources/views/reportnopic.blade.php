@@ -165,11 +165,8 @@ Report
                                         <div class="row">
                                             <div class="card-block col-sm-11">
                                                 <div class="card-text text-justify pl-3">
-                                                    {{stripslashes($fund->duration)}}
+                                                    <strong>Duration: </strong> {{stripslashes($fund->duration)}}
                                                 </div>
-                                            </div>
-                                            <div class="col-sm-1 mt-2">
-                                                <img id="clock" src="{{asset('img/clock.png')}}" width="50px" alt="">
                                             </div>
                                         </div>
                                     </div>
@@ -181,9 +178,6 @@ Report
                                                     <strong>Financial Support: </strong>{{stripslashes($fund->financial)}}
                                                 </div>
                                             </div>
-                                            <div class="col-sm-1 mt-2">
-                                                <img id="money" src="{{asset('img/money.png')}}" width="50px" alt="">
-                                            </div>
                                         </div>
                                     </div>
 
@@ -194,9 +188,6 @@ Report
                                                     <strong>Requirements: </strong>{{stripslashes($fund->requirements)}}
                                                 </div>
                                             </div>
-                                            <div class="col-sm-1 mt-2">
-                                                <img id="cv" src="{{asset('img/cv.png')}}" width="50px" alt="">
-                                            </div>
                                         </div>
                                     </div>
 
@@ -206,9 +197,6 @@ Report
                                                 <div class="card-text text-justify pl-3">
                                                     <strong>Deadline: </strong>{{stripslashes($fund->deadline)}}
                                                 </div>
-                                            </div>
-                                            <div class="col-sm-1 mt-2">
-                                                <img id="clockfire" src="{{asset('img/deadline2.png')}}" width="50px" alt="">
                                             </div>
                                         </div>
                                     </div>
