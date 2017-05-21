@@ -63,6 +63,54 @@ class reportController extends Controller
       return view('report')->with(compact('funds'));
     }
 
+    public function showNopic($name){
+        $country_id = country::where('name', $name)->get()[0]->id;
+        $organization_id = organization::where('country_id', $country_id)->get()->pluck("id")->toArray();
+        $funds = new Collection();
+        $lengthTotal = 0;
+        foreach ($this->getCategories() as $tag){
+            $tmp = $tag["mainTag"]->funds()->where('visible',true)->whereIn('organization_id', $organization_id)->with('tags', 'fields', 'organization')->orderBy('organization_id')->get();
+
+            $tagChildren = $this->findChildren($tag["mainTag"], new Collection());
+            $hasFund = false;
+            foreach ($tagChildren as $tag_child){
+                if (!$tag_child->funds()->whereIn('organization_id', $organization_id)->get()->isEmpty()){
+                    $hasFund = true;
+                    break;
+                }
+            }
+            if(!$hasFund)
+                continue;
+            $fundsTmp = new Collection();
+            foreach ($tmp as $fund){
+
+                $categories = $fund->tags->all();
+
+                $temp = [];
+                foreach ($categories as $category){
+                    $cat = tag::find($category["id"]);
+                    $tempArray = [];
+                    array_push($tempArray, $cat);
+                    $catParent = $cat->parent;
+                    while ($catParent){
+                        array_push($tempArray, $catParent);
+                        $catParent = $catParent->parent;
+                    }
+                    $tempArray = array_reverse($tempArray);
+                    array_push($temp, $tempArray);
+                }
+                $fund->tags = $temp;
+                $fundsTmp->push($fund);
+            }
+            $lengthTotal += $fundsTmp->count();
+            $funds->push(["tag"=>$tag, "funds"=>$fundsTmp, "lengthTotal"=>$lengthTotal]);
+        }
+//      $funds = $funds->all();
+//      $funds = tag::funds()->with('tags', 'organization', 'fields')->get();
+//        return $funds[1]["funds"];
+        return view('reportnopic')->with(compact('funds'));
+    }
+
     private function getCategories(){
         $tagsInOrder = new Collection();
         $tags = tag::where('parent_id', 0)->get();

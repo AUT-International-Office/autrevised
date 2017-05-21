@@ -120,6 +120,7 @@ Route::delete('/users/{id}', 'adminController@deleteUser')->middleware('admin');
 //----------------------------------------------
 
 Route::get('report/{name}', 'reportController@show')->middleware('admin');
+Route::get('nopicreport/{name}', 'reportController@showNopic')->middleware('admin');
 Route::get('funds/*', function (){
    return view('errors.404');
 });
